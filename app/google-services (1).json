@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "477289476958",
+    "project_id": "cloudy-app-63db4",
+    "storage_bucket": "cloudy-app-63db4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477289476958:android:0f4cc46c2e63131f42d5cf",
+        "android_client_info": {
+          "package_name": "com.example.cloudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477289476958-c4282gcucjl7v5vcr0annhp5qlct61oc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cloudy",
+            "certificate_hash": "ade9cd8d95c0895dbb127ed12d50460e5766a8b7"
+          }
+        },
+        {
+          "client_id": "477289476958-1f60vfcibrq4i1npfgf4joodk6ei4fp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRIz1ZtKtk2Zr6EYI2F9vR5fJioQeKzQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477289476958-1f60vfcibrq4i1npfgf4joodk6ei4fp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
