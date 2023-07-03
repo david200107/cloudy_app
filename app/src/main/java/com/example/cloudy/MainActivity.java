@@ -1,12 +1,17 @@
 package com.example.cloudy;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -52,11 +57,11 @@ public class MainActivity extends AppCompatActivity  {
             GPSLoc.getLocation();
             coordinates[0]=GPSLoc.getLatitude();
             coordinates[1]=GPSLoc.getLongitude();
-            Log.d("Coordinates",coordinates[0]+" "+coordinates[1]);
+
         }else{
             coordinates[0]=Double.parseDouble(sharedPreferences.getLatitude());
             coordinates[1]=Double.parseDouble(sharedPreferences.getLongitude());
-            Log.d("Coordinates",coordinates[0]+" "+coordinates[1]);
+
         }
         sharedPreferences.setGps("1");
 
@@ -64,9 +69,9 @@ public class MainActivity extends AppCompatActivity  {
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            // Location permission granted, proceed with your logic
+
             sharedPreferences.setLocationPermision("1");
-            // ...
+
         } else {
 
            showPermissionDialog();
@@ -75,62 +80,97 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+
         if(sharedPreferences.getLocationPermision().equals("1")) {
-            homeFragment = new HomeFragment(coordinates[0],coordinates[1]);
-            hourlyForecastFragment = new HourlyForecastFragment(coordinates);
-            dailyForecastFragment = new DailyForecastFragment(coordinates);
-            settingsFragment = new SettingsFragment();
+
+            if (isNetworkAvailable(getBaseContext())) {
+
+                if(isGPSEnabled(getBaseContext())){
+                    homeFragment = new HomeFragment(coordinates[0], coordinates[1]);
+                    hourlyForecastFragment = new HourlyForecastFragment(coordinates);
+                    dailyForecastFragment = new DailyForecastFragment(coordinates);
+                    settingsFragment = new SettingsFragment();
 
 
+                    getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, homeFragment).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, hourlyForecastFragment).hide(hourlyForecastFragment).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, dailyForecastFragment).hide(dailyForecastFragment).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, settingsFragment).hide(settingsFragment).commit();
 
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, homeFragment).commit();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, hourlyForecastFragment).hide(hourlyForecastFragment).commit();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, dailyForecastFragment).hide(dailyForecastFragment).commit();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragmentx, settingsFragment).hide(settingsFragment).commit();
+                    bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                            switch (item.getItemId()) {
+                                case R.id.home:
+                                    getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().show(homeFragment).commit();
 
+                                    return true;
+                                case R.id.hourly:
+                                    getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().show(hourlyForecastFragment).commit();
 
-
-
-            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.home:
-                            getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
-                            getSupportFragmentManager().beginTransaction().show(homeFragment).commit();
-
-                            return true;
-                        case R.id.hourly:
-                            getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
-                            getSupportFragmentManager().beginTransaction().show(hourlyForecastFragment).commit();
-
-                            return true;
-                        case R.id.daily:
-                            getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
-                            getSupportFragmentManager().beginTransaction().show(dailyForecastFragment).commit();
-                            return true;
-                        case R.id.set:
-                            getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
-                            getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
-                            getSupportFragmentManager().beginTransaction().show(settingsFragment).commit();
-                            return true;
-                    }
-                    return false;
+                                    return true;
+                                case R.id.daily:
+                                    getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(settingsFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().show(dailyForecastFragment).commit();
+                                    return true;
+                                case R.id.set:
+                                    getSupportFragmentManager().beginTransaction().hide(hourlyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(dailyForecastFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                                    getSupportFragmentManager().beginTransaction().show(settingsFragment).commit();
+                                    return true;
+                            }
+                            return false;
+                        }
+                    });
+                }else{
+                    GPSDisabledDialog();
                 }
-            });
+
+
+            } else {
+                networkDisabledDialog();
+            }
         }
 
 
 
+
     }
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager != null) {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+            if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isGPSEnabled(Context context) {
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        if (locationManager != null) {
+            boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            return isGPSEnabled;
+        }
+
+        return false;
+    }
+
 
     private void showPermissionDialog() {
         new AlertDialog.Builder(this)
@@ -152,6 +192,35 @@ public class MainActivity extends AppCompatActivity  {
                 .show();
     }
 
+    private void networkDisabledDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("No network connection")
+                .setMessage("Please check if wifi or mobile data in enabled.")
+                .setPositiveButton("Ok", (dialog, which) -> {
+                    Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                })
+
+                .setCancelable(false)
+                .show();
+    }
+
+    private void GPSDisabledDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("GPS (Location) is disabled")
+                .setMessage("Please enable GPS location to use app.")
+                .setPositiveButton("Ok", (dialog, which) -> {
+                    Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                })
+
+                .setCancelable(false)
+                .show();
+    }
 
 
 }

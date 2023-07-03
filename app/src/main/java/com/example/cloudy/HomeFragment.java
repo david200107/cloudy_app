@@ -152,7 +152,7 @@ public class HomeFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
 
-    private Dialog dialog=new Dialog();
+
 
     Calendar currentTime;
 
@@ -174,7 +174,7 @@ public class HomeFragment extends Fragment {
         {
             super.onCreate(savedInstanceState);
 
-            dialog.setCancelable(false);
+
             drawerLayout = binding.myDraw;
             openNav=binding.openNavi;
             locName=binding.location;
@@ -379,7 +379,7 @@ public class HomeFragment extends Fragment {
         client.newCall(requests.getWeather_request()).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                dialog.show(getParentFragmentManager(),"Fragment");
+
             }
 
             @Override
@@ -389,7 +389,7 @@ public class HomeFragment extends Fragment {
                     ResponseBody responseBody = response.body();
                     assert responseBody != null;
                     if(responseBody==null){
-                        dialog.show(getParentFragmentManager(),"Fragment");
+
                     }
                     JSONData = responseBody.string();
                     JSON_Parser JSONparser=new JSON_Parser(JSONData);
@@ -424,7 +424,7 @@ public class HomeFragment extends Fragment {
 
                             }).addOnFailureListener(Throwable::printStackTrace);
                         } catch (IOException e) {
-                            dialog.show(getParentFragmentManager(),"Fragment");
+
                             e.printStackTrace();
                         }
 
@@ -458,7 +458,7 @@ public class HomeFragment extends Fragment {
 
                             });
                         }catch (IOException e){
-                            dialog.show(getParentFragmentManager(),"Fragment");
+
                             e.printStackTrace();
                         }
                     });
@@ -541,7 +541,7 @@ public class HomeFragment extends Fragment {
         client.newCall(api_requests.getWeather_request()).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                dialog.show(getParentFragmentManager(),"Fragment");
+
             }
 
             @Override
@@ -614,7 +614,7 @@ public class HomeFragment extends Fragment {
                                         }
                                     });
                                 }catch (IOException e){
-                                    dialog.show(getParentFragmentManager(),"Fragment");
+
                                     e.printStackTrace();
                                 }
 
@@ -710,8 +710,8 @@ public class HomeFragment extends Fragment {
                                         Log.d("Testdate:",String.valueOf(finalIndex1));
                                         day_name[finalIndex1].setText(new Datetime().getDayName(json_parser.getDateTime())+"\n"+new Datetime().getDate(json_parser.getDateTime(),"yyyy-MM-dd"));
                                    } catch (ParseException e) {
-                                        dialog.show(getParentFragmentManager(),"Fragment");
-                                       // e.printStackTrace();
+
+                                        e.printStackTrace();
                                     }
 
                                     try {
@@ -724,8 +724,8 @@ public class HomeFragment extends Fragment {
 
                                         });
                                     }catch (IOException e){
-                                        dialog.show(getParentFragmentManager(),"Fragment");
-                                       // e.printStackTrace();
+
+                                        e.printStackTrace();
                                     }
                                 }
                             });
