@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity  {
     private void networkDisabledDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("No network connection")
-                .setMessage("Please check if wifi or mobile data in enabled.")
+                .setMessage("Please check if wifi or mobile data is enabled.")
                 .setPositiveButton("Ok", (dialog, which) -> {
                     Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
