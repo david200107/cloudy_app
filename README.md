@@ -6,8 +6,9 @@ Introducing my personal project: an intuitive weather app designed to keep you i
 
 -Home Screen:
 Users can view information about the current weather, today's weather details, hourly forecasts, 7-day weather outlook, and details about sunrise and sunset
+<br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131222.png?alt=media&token=8b12579b-843e-4a8a-86a1-f99efda33cd9&_gl=1*fyxcwi*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTc4NjUuMjkuMC4w" width="500"/>
-
+<br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131300.png?alt=media&token=36002861-be26-41cd-b4f4-058d7b8a64b9&_gl=1*1wrw5na*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTgxMjYuNTcuMC4w" width="500"/>
 
 
