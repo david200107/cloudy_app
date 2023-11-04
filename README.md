@@ -7,7 +7,7 @@ Introducing my personal project: an intuitive weather app designed to keep you i
 -Home Screen:
 Users can view information about the current weather, today's weather details, hourly forecasts, 7-day weather outlook, and details about sunrise and sunset
 
-<img src="https://firebasestorage.googleapis.com/v0/b/fir-auth-9b400.appspot.com/o/uploads%2FScreenshot%202023-05-19%20154156.png?alt=media&token=d2959002-a7cd-4838-be7f-804bc51fb0b0&_gl=1*16lflyo*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTY4NjUuNjAuMC4w" width="200" />
+<img src="[https://firebasestorage.googleapis.com/v0/b/fir-auth-9b400.appspot.com/o/uploads%2FScreenshot%202023-05-19%20154156.png?alt=media&token=d2959002-a7cd-4838-be7f-804bc51fb0b0&_gl=1*16lflyo*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTY4NjUuNjAuMC4w](https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131222.png?alt=media&token=8b12579b-843e-4a8a-86a1-f99efda33cd9&_gl=1*1ge8i8g*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTc4NjEuMzMuMC4w)" width="500"/>
 
 ![Screenshot_20230626_143134](https://github.com/david200107/cloudy_app/assets/137782051/1f6ac5c1-612b-4d23-86c0-d04befd14d37)
 
@@ -17,4 +17,13 @@ Users can view information about the current weather, today's weather details, h
 ![Screenshot_20230626_143122](https://github.com/david200107/cloudy_app/assets/137782051/bb77d72a-c8f0-4c5f-8eff-92358708d4b4)
 
 -7 Days Forecast
-sers can access detailed information about the weather conditions for the next 7 days, including temperature, precipitation probability, wind speed and direction, precipitation amount, and more."
+Users can access detailed information about the weather conditions for the next 7 days, including temperature, precipitation probability, wind speed and direction, precipitation amount, and more.
+
+-Settings Screen
+The app allows users to customize the units of measurement for weather information according to their preferences.
+
+Other detalis:
+The app receives data from the Open-Meteo provider through an API request in JSON format. 
+Additionally, images for weather conditions are stored on the Firebase platform.
+
+Important: The app is not yet fully finalized and requires further improvements. Any potential bugs will be addressed soon.
