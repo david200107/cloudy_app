@@ -17,7 +17,7 @@ Users can view information about the current weather, today's weather details, h
 -72H forecast with detalied informations about weather:
  Users can access detailed information about weather conditions for each hour, including temperature, humidity, wind speed and direction, precipitation quantity, and more.
  
- <br>
+<br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131348.png?alt=media&token=0ac0a40e-e33b-4e7c-9de9-0e290bb92af7&_gl=1*1my8kon*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTgzMTkuNjAuMC4w" width="500"/>
 <br>
 
