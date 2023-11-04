@@ -6,6 +6,7 @@ Introducing my personal project: an intuitive weather app designed to keep you i
 
 -Home Screen:
 Users can view information about the current weather, today's weather details, hourly forecasts, 7-day weather outlook, and details about sunrise and sunset
+
 <br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131222.png?alt=media&token=8b12579b-843e-4a8a-86a1-f99efda33cd9&_gl=1*fyxcwi*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTc4NjUuMjkuMC4w" width="500"/>
 <br>
@@ -15,6 +16,7 @@ Users can view information about the current weather, today's weather details, h
 
 -72H forecast with detalied informations about weather:
  Users can access detailed information about weather conditions for each hour, including temperature, humidity, wind speed and direction, precipitation quantity, and more.
+ 
  <br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131348.png?alt=media&token=0ac0a40e-e33b-4e7c-9de9-0e290bb92af7&_gl=1*1my8kon*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTgzMTkuNjAuMC4w" width="500"/>
 <br>
@@ -28,6 +30,7 @@ Users can access detailed information about the weather conditions for the next 
 
 -Settings Screen
 The app allows users to customize the units of measurement for weather information according to their preferences.
+
 <br>
 <img src="https://firebasestorage.googleapis.com/v0/b/cloudy-app-63db4.appspot.com/o/github%20images%2FScreenshot_20231104_131434.png?alt=media&token=7aadad4b-7d1d-474f-8337-8c78456bd01b&_gl=1*ynura0*_ga*MTI2OTMwMDgzMi4xNjg3NzU5ODk1*_ga_CW55HF8NVT*MTY5OTA5Njc3MS4yOC4xLjE2OTkwOTg0MzIuOC4wLjA." width="500"/>
 <br>
